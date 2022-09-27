@@ -1,7 +1,17 @@
 package baseball;
 
+import baseball.service.BaseballService;
+
 public class Application {
+
+    public static BaseballService baseballService = new BaseballService();
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        initRandomBaseballNumber();
     }
+
+    private static void initRandomBaseballNumber() {
+        baseballService.initRandomBaseballNumber();
+    }
+
 }
