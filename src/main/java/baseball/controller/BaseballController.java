@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.model.BaseballService;
-import baseball.view.InputAnyNumber;
 
 public class BaseballController {
 
@@ -12,15 +11,15 @@ public class BaseballController {
     }
 
     public int inputAnyNumber() {
-        InputAnyNumber inputAnyNumber = new InputAnyNumber();
-        return inputAnyNumber.inputAnyNumber();
+        return baseballService.inputAnyNumber();
     }
 
     public boolean checkSameInputNumberAndRandomNumber(int inputAnyNumber) {
-        return false;
+        return baseballService.checkSameInputNumberAndRandomNumber(inputAnyNumber);
     }
 
     public boolean confirmRestartGame() {
-        return false;
+        return baseballService.confirmRestartGame();
     }
+
 }
