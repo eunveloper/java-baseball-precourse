@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.dto.RandomBaseballNumber;
+import baseball.model.RandomBaseballNumber;
 
 public class BaseballService {
 

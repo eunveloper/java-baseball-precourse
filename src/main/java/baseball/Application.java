@@ -1,17 +1,35 @@
 package baseball;
 
-import baseball.service.BaseballService;
+import baseball.controller.BaseballController;
 
 public class Application {
 
-    public static BaseballService baseballService = new BaseballService();
+    public static BaseballController baseballController = new BaseballController();
 
     public static void main(String[] args) {
-        initRandomBaseballNumber();
+        startBaseballGame();
+        doBaseballGame();
+        confirmRestartBaseballGame();
     }
 
-    private static void initRandomBaseballNumber() {
-        baseballService.initRandomBaseballNumber();
+    private static void startBaseballGame() {
+        baseballController.initRandomBaseballNumber();
+    }
+
+    private static void doBaseballGame() {
+        boolean sameNumber;
+        do {
+            int inputAnyNumber = baseballController.inputAnyNumber();
+            sameNumber = baseballController.checkSameInputNumberAndRandomNumber(inputAnyNumber);
+        } while (!sameNumber);
+    }
+
+    private static void confirmRestartBaseballGame() {
+        boolean restartGame = baseballController.confirmRestartGame();
+        if (restartGame) {
+            startBaseballGame();
+        }
+        System.exit(0);
     }
 
 }
