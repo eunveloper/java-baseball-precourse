@@ -1,6 +1,6 @@
-package baseball.service;
+package baseball.model;
 
-import baseball.model.RandomBaseballNumber;
+import baseball.vo.RandomBaseballNumber;
 
 public class BaseballService {
 

@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.service.BaseballService;
+import baseball.model.BaseballService;
 import baseball.view.InputAnyNumber;
 
 public class BaseballController {
