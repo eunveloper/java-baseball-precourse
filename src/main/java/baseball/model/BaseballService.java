@@ -2,6 +2,7 @@ package baseball.model;
 
 import baseball.view.InputAnyNumber;
 import baseball.vo.RandomBaseballNumber;
+import org.junit.platform.commons.util.StringUtils;
 
 public class BaseballService {
 
@@ -13,11 +14,11 @@ public class BaseballService {
     }
 
     public int inputAnyNumber() {
-        int inputNumber = inputAnyNumber.inputAnyNumber();
-        if (checkValidationInputNumber(inputNumber)) {
-            return inputAnyNumber.inputAnyNumber();
+        String inputNumberText = inputAnyNumber.inputAnyNumber();
+        if (checkValidationInputNumber(inputNumberText)) {
+            return Integer.parseInt(inputNumberText);
         }
-        throw new IllegalStateException();
+        throw new IllegalArgumentException();
     }
 
     public boolean checkSameInputNumberAndRandomNumber(int inputAnyNumber) {
@@ -28,8 +29,17 @@ public class BaseballService {
         return false;
     }
 
-    private boolean checkValidationInputNumber(int inputNumber) {
-        return false;
+    public boolean checkValidationInputNumber(String inputNumberText) {
+        if (!checkNotEmptyInputNumber(inputNumberText)) {
+            return false;
+        }
+        if (!checkNumericInputNumber(inputNumberText)) {
+            return false;
+        }
+        if (!checkLengthInputNumber(inputNumberText)) {
+            return false;
+        }
+        return true;
     }
 
     private void checkContainNumber() {
@@ -38,6 +48,22 @@ public class BaseballService {
 
     private void checkSameLocationNumber() {
 
+    }
+
+    public boolean checkNotEmptyInputNumber(String inputNumberText) {
+        return StringUtils.isNotBlank(inputNumberText);
+    }
+
+    public boolean checkNumericInputNumber(String inputNumberText) {
+        return inputNumberText.matches("[-+]?\\d*\\.?\\d+");
+    }
+
+    public boolean checkLengthInputNumber(String inputNumberText) {
+        int inputNumberLength = inputNumberText.length();
+        if (inputNumberLength != 3) {
+            return false;
+        }
+        return true;
     }
 
 }

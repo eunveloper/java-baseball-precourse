@@ -6,9 +6,9 @@ public class InputAnyNumber {
 
     private final String inputText = "숫자를 입력해주세요 : ";
 
-    public int inputAnyNumber() {
+    public String inputAnyNumber() {
         System.out.print(inputText);
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 
 }

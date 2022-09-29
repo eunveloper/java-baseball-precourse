@@ -11,7 +11,13 @@ public class BaseballController {
     }
 
     public int inputAnyNumber() {
-        return baseballService.inputAnyNumber();
+        int inputAnyNumber = 0;
+        try {
+            inputAnyNumber = baseballService.inputAnyNumber();
+        } catch (IllegalArgumentException e) {
+            System.exit(0);
+        }
+        return inputAnyNumber;
     }
 
     public boolean checkSameInputNumberAndRandomNumber(int inputAnyNumber) {
