@@ -1,6 +1,7 @@
 package baseball.client;
 
 import baseball.controller.BaseballController;
+import baseball.vo.GameResultStatus;
 
 public class BaseballGamePlay {
 
@@ -17,11 +18,14 @@ public class BaseballGamePlay {
     }
 
     private void doBaseballGame() {
-        boolean sameNumber;
+        boolean isSameNumber;
         do {
             int inputAnyNumber = baseballController.inputAnyNumber();
-            sameNumber = baseballController.checkSameInputNumberAndRandomNumber(inputAnyNumber);
-        } while (!sameNumber);
+            GameResultStatus gameResultStatus
+                    = baseballController.checkGameRuleInputNumberAndRandomNumber(inputAnyNumber);
+            baseballController.guideGameResult(gameResultStatus);
+            isSameNumber = gameResultStatus.isSameNumber();
+        } while (!isSameNumber);
     }
 
     private void confirmRestartBaseballGame() {

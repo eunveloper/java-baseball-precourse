@@ -7,24 +7,31 @@ import java.util.List;
 
 public class RandomBaseballNumber {
     
-    private int firstNumber;
-    private int secondNumber;
-    private int thirdNumber;
-
     private List<Integer> randomNumbers;
+    private int randomNumberSize = 3;
 
     public void initNumber() {
-        this.firstNumber = Randoms.pickNumberInRange(1, 9);
-        this.secondNumber = Randoms.pickNumberInRange(1, 9);
-        this.thirdNumber = Randoms.pickNumberInRange(1, 9);
-        generatorRandomBaseballNumber();
+        randomNumbers = new ArrayList<>();
+        for(int idx = 0; idx < randomNumberSize; idx++) {
+            int randomNumber = generateRandomNumberNotOverlap();
+            randomNumbers.add(randomNumber);
+        }
     }
 
-    private void generatorRandomBaseballNumber() {
-        randomNumbers = new ArrayList<>();
-        randomNumbers.add(firstNumber);
-        randomNumbers.add(secondNumber);
-        randomNumbers.add(thirdNumber);
+    private int generateRandomNumberNotOverlap() {
+        int randomNumber;
+        do {
+            randomNumber = Randoms.pickNumberInRange(1, 9);
+        } while(checkNotOverlapNumber(randomNumber));
+        return randomNumber;
+    }
+
+    private boolean checkNotOverlapNumber(int randomNumber) {
+        for (int idx = 0; idx < randomNumbers.size(); idx++) {
+            if(randomNumbers.get(idx) == randomNumber)
+                return true;
+        }
+        return false;
     }
 
     public String getResultRandomNumber() {
@@ -39,4 +46,11 @@ public class RandomBaseballNumber {
         return randomNumbers;
     }
 
+    public boolean checkContainNumber(int targetNumber) {
+        return randomNumbers.contains(targetNumber);
+    }
+
+    public boolean checkSameLocationNumber(int targetNumber, int idx) {
+        return randomNumbers.get(idx) == targetNumber;
+    }
 }
