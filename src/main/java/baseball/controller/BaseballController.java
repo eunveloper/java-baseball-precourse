@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.BaseballService;
+import baseball.vo.GameResultStatus;
 
 public class BaseballController {
 
@@ -11,17 +12,15 @@ public class BaseballController {
     }
 
     public int inputAnyNumber() {
-        int inputAnyNumber = 0;
-        try {
-            inputAnyNumber = baseballService.inputAnyNumber();
-        } catch (IllegalArgumentException e) {
-            System.exit(0);
-        }
-        return inputAnyNumber;
+        return baseballService.inputAnyNumber();
     }
 
-    public boolean checkSameInputNumberAndRandomNumber(int inputAnyNumber) {
-        return baseballService.checkSameInputNumberAndRandomNumber(inputAnyNumber);
+    public GameResultStatus checkGameRuleInputNumberAndRandomNumber(int inputAnyNumber) {
+        return baseballService.checkGameRuleInputNumberAndRandomNumber(inputAnyNumber);
+    }
+
+    public void guideGameResult(GameResultStatus gameResultStatus) {
+        baseballService.guideGameResult(gameResultStatus);
     }
 
     public boolean confirmRestartGame() {
