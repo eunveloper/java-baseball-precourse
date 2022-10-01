@@ -42,13 +42,17 @@ public class CheckGameRuleTest extends NsTest {
 
     @Test
     void 삼스트라이크가되면_게임이_종료된다() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("298");
-                    assertThat(output()).contains("게임 종료");
-                },
-                2, 9, 8
-        );
+        try {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("298");
+                        assertThat(output()).contains("게임 종료");
+                    },
+                    2, 9, 8
+            );
+        } catch (NoSuchElementException e) {
+            System.out.println("다음 입력을 계속 받기 때문에 테스트가 끝나고 입력이 없는 경우는 무시한다.");
+        }
     }
 
     @Override

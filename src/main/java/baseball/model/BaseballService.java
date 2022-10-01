@@ -15,7 +15,6 @@ public class BaseballService {
 
     public void initRandomBaseballNumber() {
         randomBaseballNumber.initNumber();
-        //System.out.println("랜덤숫자 = " + randomBaseballNumber.getResultRandomNumber());
     }
 
     public int inputAnyNumber() {
@@ -42,7 +41,7 @@ public class BaseballService {
     }
 
     public boolean confirmRestartGame() {
-        return true;
+        return gameCommentView.confirmRestartGame();
     }
 
     public boolean checkValidationInputNumber(String inputNumberText) {
