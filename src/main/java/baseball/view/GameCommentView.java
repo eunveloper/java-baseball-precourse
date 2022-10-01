@@ -11,7 +11,10 @@ public class GameCommentView {
     private final String nothing = "낫싱";
 
     private final String success = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private final String regame = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private final String reStart = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+    private final String ok = "1";
+    private final String no = "2";
 
 
     public String inputAnyNumber() {
@@ -36,9 +39,25 @@ public class GameCommentView {
             return resultGameComment.append(nothing).toString();
         }
 
-        if (ballComment != null) resultGameComment.append(ballComment);
-        if (strikeComment != null) resultGameComment.append(strikeComment);
+        if (ballComment != null) {
+            resultGameComment.append(ballComment);
+        }
+        if (strikeComment != null) {
+            resultGameComment.append(strikeComment);
+        }
 
         return resultGameComment.toString();
+    }
+
+    public boolean confirmRestartGame() {
+        System.out.println(reStart);
+        String reStarted = Console.readLine();
+        if (ok.equals(reStarted)) {
+            return true;
+        }
+        if (no.equals(reStarted)) {
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
 }

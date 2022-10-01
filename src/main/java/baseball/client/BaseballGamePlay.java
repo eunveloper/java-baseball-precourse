@@ -31,9 +31,8 @@ public class BaseballGamePlay {
     private void confirmRestartBaseballGame() {
         boolean restartGame = baseballController.confirmRestartGame();
         if (restartGame) {
-            startBaseballGame();
+            startGame();
         }
-        System.exit(0);
     }
 
 }

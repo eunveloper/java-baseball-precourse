@@ -27,11 +27,22 @@ public class RandomBaseballNumber {
     }
 
     private boolean checkNotOverlapNumber(int randomNumber) {
+        Boolean isExistSameNumber = null;
         for (int idx = 0; idx < randomNumbers.size(); idx++) {
-            if(randomNumbers.get(idx) == randomNumber)
-                return true;
+            isExistSameNumber = compareSameNumber(randomNumbers.get(idx), randomNumber);
+        }
+
+        if (isExistSameNumber != null) {
+            return isExistSameNumber;
         }
         return false;
+    }
+
+    private Boolean compareSameNumber(Integer inputRandomNumber, int randomNumber) {
+        if(inputRandomNumber == randomNumber) {
+            return true;
+        }
+        return null;
     }
 
     public String getResultRandomNumber() {
