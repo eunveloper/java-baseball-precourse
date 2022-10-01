@@ -38,15 +38,21 @@ public class GameCommentView {
         if (ballComment == null && strikeComment == null) {
             return resultGameComment.append(nothing).toString();
         }
+        assembleStateComment(resultGameComment, ballComment, strikeComment);
 
+        return resultGameComment.toString();
+    }
+
+    private StringBuilder assembleStateComment(StringBuilder resultGameComment,
+                                               String ballComment,
+                                               String strikeComment) {
         if (ballComment != null) {
             resultGameComment.append(ballComment);
         }
         if (strikeComment != null) {
             resultGameComment.append(strikeComment);
         }
-
-        return resultGameComment.toString();
+        return resultGameComment;
     }
 
     public boolean confirmRestartGame() {
